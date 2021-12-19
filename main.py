@@ -1,4 +1,6 @@
-import gensim
+from gensim.models import fasttext
+from gensim.test.utils import datapath
+
 import time
 from flask import Flask, request, jsonify
 
@@ -8,11 +10,10 @@ app.config['JSON_AS_ASCII'] = False
 
 print("Loading...")
 start = time.time()
-model = gensim.models.KeyedVectors.load_word2vec_format(
-    'cc.ja.300.vec.gz', binary=False)
+model = fasttext.load_facebook_vectors("cc.ja.300.bin")
 end = time.time()
 print("Loaded.")
-print(end-start)
+print(end - start)
 print()
 
 
