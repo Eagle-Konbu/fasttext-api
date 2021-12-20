@@ -9,9 +9,9 @@ FROM python:3.9-slim-buster
 
 WORKDIR /myapp
 
-COPY main.py .
+COPY main.py requirements.txt ./
 
-RUN pip install gensim flask
+RUN pip install requirements.txt
 
 COPY --from=downloader cc.ja.300.bin ./
 
